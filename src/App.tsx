@@ -110,12 +110,12 @@ function App() {
       <main className="max-w-7xl mx-auto px-4 py-8">
         {activeTab === 'home' && <HomeTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} />}
         {activeTab === 'getting-started' && <GettingStartedTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} copyToClipboard={copyToClipboard} />}
-        {activeTab === 'priority-downloads' && <PriorityDownloadsTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} copyToClipboard={copyToClipboard} />}
-        {activeTab === 'tools-setup' && <ToolsSetupTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} copyToClipboard={copyToClipboard} />}
-        {activeTab === 'learning-path' && <LearningPathTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} copyToClipboard={copyToClipboard} />}
+        {activeTab === 'priority-downloads' && <PriorityDownloadsTab isDarkMode={isDarkMode} cardClasses={cardClasses} copyToClipboard={copyToClipboard} />}
+        {activeTab === 'tools-setup' && <ToolsSetupTab isDarkMode={isDarkMode} cardClasses={cardClasses} copyToClipboard={copyToClipboard} />}
+        {activeTab === 'learning-path' && <LearningPathTab isDarkMode={isDarkMode} cardClasses={cardClasses} copyToClipboard={copyToClipboard} />}
         {activeTab === 'advanced-tips' && <AdvancedTipsTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} copyToClipboard={copyToClipboard} />}
         {activeTab === 'success-stories' && <SuccessStoriesTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} />}
-        {activeTab === 'resources' && <ResourcesTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} copyToClipboard={copyToClipboard} />}
+        {activeTab === 'resources' && <ResourcesTab isDarkMode={isDarkMode} cardClasses={cardClasses} copyToClipboard={copyToClipboard} />}
       </main>
       <Toaster />
     </div>
@@ -351,7 +351,7 @@ function GettingStartedTab({ isDarkMode, cardClasses }: { isDarkMode: boolean, c
   )
 }
 
-function PriorityDownloadsTab({ isDarkMode, cardClasses, accentClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, accentClasses: string, copyToClipboard: (text: string) => void }) {
+function PriorityDownloadsTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, copyToClipboard: (text: string) => void }) {
   return (
     <div className="space-y-8">
       <div className={`rounded-xl p-6 ${cardClasses} border`}>
@@ -543,7 +543,7 @@ function PriorityDownloadsTab({ isDarkMode, cardClasses, accentClasses, copyToCl
   )
 }
 
-function ToolsSetupTab({ isDarkMode, cardClasses, accentClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, accentClasses: string, copyToClipboard: (text: string) => void }) {
+function ToolsSetupTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, copyToClipboard: (text: string) => void }) {
   return (
     <div className="space-y-8">
       <div className={`rounded-xl p-6 ${cardClasses} border`}>
@@ -672,7 +672,7 @@ function ToolsSetupTab({ isDarkMode, cardClasses, accentClasses, copyToClipboard
   )
 }
 
-function LearningPathTab({ isDarkMode, cardClasses, accentClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, accentClasses: string, copyToClipboard: (text: string) => void }) {
+function LearningPathTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, copyToClipboard: (text: string) => void }) {
   return (
     <div className="space-y-8">
       <div className={`rounded-xl p-6 ${cardClasses} border`}>
@@ -1063,7 +1063,7 @@ function SuccessStoriesTab({ isDarkMode, cardClasses }: { isDarkMode: boolean, c
   )
 }
 
-function ResourcesTab({ isDarkMode, cardClasses, accentClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, accentClasses: string, copyToClipboard: (text: string) => void }) {
+function ResourcesTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, copyToClipboard: (text: string) => void }) {
   return (
     <div className="space-y-8">
       <div className={`rounded-xl p-6 ${cardClasses} border`}>
