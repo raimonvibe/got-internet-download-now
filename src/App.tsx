@@ -422,7 +422,7 @@ function GettingStartedTab({ isDarkMode, cardClasses, vibrantAccentClasses, grad
                   🤖 Let AI create this for you!
                 </button>
               </DialogTrigger>
-              <DialogContent className={`w-full max-w-4xl max-h-[90vh] overflow-y-auto mx-4 ${isDarkMode ? 'bg-gray-900 border-gray-700 text-white' : 'bg-white border-gray-200 text-gray-900'}`}>
+              <DialogContent className={`w-full max-w-sm sm:max-w-md md:max-w-lg lg:max-w-2xl xl:max-w-4xl max-h-[90vh] overflow-y-auto mx-4 ${isDarkMode ? 'bg-gray-900 border-gray-700 text-white' : 'bg-white border-gray-200 text-gray-900'}`}>
                 <DialogHeader>
                   <DialogTitle className={`text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'} flex items-center gap-2`}>
                     <Bot className="w-6 h-6 text-purple-500" />
