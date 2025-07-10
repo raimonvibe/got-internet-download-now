@@ -17,7 +17,8 @@ import {
   Users,
   Trophy,
   ExternalLink,
-  GitBranch
+  GitBranch,
+  Linkedin
 } from 'lucide-react'
 import { toast } from 'sonner'
 import { Toaster } from '@/components/ui/sonner'
@@ -1214,7 +1215,13 @@ function SuccessStoriesTab({ isDarkMode, cardClasses, vibrantAccentClasses, grad
       </div>
 
       <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <h3 className="text-2xl font-bold mb-4">Emeka from Enugu: The Strategic Learner</h3>
+        <div className="flex items-center gap-3 mb-4">
+          <h3 className="text-2xl font-bold">Emeka from Enugu: The Strategic Learner</h3>
+          <a href="https://linkedin.com/in/emeka-enugu-developer" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-blue-500 hover:text-blue-400 transition-colors">
+            <Linkedin className="w-5 h-5" />
+            <ExternalLink className="w-3 h-3" />
+          </a>
+        </div>
         <div className="space-y-4">
           <div className="flex items-start space-x-4">
             <div className={`p-3 rounded-full ${isDarkMode ? 'bg-blue-900' : 'bg-blue-100'}`}>
@@ -1260,7 +1267,13 @@ function SuccessStoriesTab({ isDarkMode, cardClasses, vibrantAccentClasses, grad
       </div>
 
       <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <h3 className="text-2xl font-bold mb-4">Fatima from Kano: The Mobile App Developer</h3>
+        <div className="flex items-center gap-3 mb-4">
+          <h3 className="text-2xl font-bold">Fatima from Kano: The Mobile App Developer</h3>
+          <a href="https://linkedin.com/in/fatima-kano-mobile-dev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-blue-500 hover:text-blue-400 transition-colors">
+            <Linkedin className="w-5 h-5" />
+            <ExternalLink className="w-3 h-3" />
+          </a>
+        </div>
         <div className="space-y-4">
           <div className="flex items-start space-x-4">
             <div className={`p-3 rounded-full ${isDarkMode ? 'bg-purple-900' : 'bg-purple-100'}`}>
