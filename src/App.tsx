@@ -61,6 +61,16 @@ function App() {
     ? 'text-blue-400'
     : 'text-amber-700'
 
+  const vibrantAccentClasses = isDarkMode
+    ? 'text-cyan-400'
+    : 'text-orange-600'
+
+  const gradientTextClasses = 'bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent'
+  
+  const colorfulCardClasses = isDarkMode
+    ? 'bg-gradient-to-br from-gray-900 to-gray-800 border-purple-500/30'
+    : 'bg-gradient-to-br from-white to-amber-50 border-orange-300/50'
+
   return (
     <div className={`min-h-screen ${themeClasses} transition-colors duration-300`}>
       {/* Header */}
@@ -69,7 +79,7 @@ function App() {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
               <Code className={`w-8 h-8 ${accentClasses}`} />
-              <h1 className="text-2xl font-bold">The Code Seeker's Journey</h1>
+              <h1 className="text-2xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">Code Quest Academy</h1>
             </div>
             <button
               onClick={toggleTheme}
@@ -82,7 +92,7 @@ function App() {
       </header>
 
       {/* Navigation Tabs */}
-      <nav className={`sticky top-16 z-40 ${isDarkMode ? 'bg-gray-900/90' : 'bg-white/90'} backdrop-blur-sm border-b ${isDarkMode ? 'border-gray-800' : 'border-amber-200'}`}>
+      <nav className={`sticky top-16 z-40 ${isDarkMode ? 'bg-gradient-to-r from-gray-900/90 to-gray-800/90' : 'bg-gradient-to-r from-white/90 to-amber-50/90'} backdrop-blur-sm border-b ${isDarkMode ? 'border-purple-500/30' : 'border-orange-300/50'}`}>
         <div className="max-w-7xl mx-auto px-4">
           <div className="flex overflow-x-auto scrollbar-hide">
             {tabs.map((tab) => {
@@ -91,10 +101,10 @@ function App() {
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center space-x-2 px-4 py-3 whitespace-nowrap border-b-2 transition-colors ${
+                  className={`flex items-center space-x-2 px-4 py-3 whitespace-nowrap border-b-2 transition-all duration-300 ${
                     activeTab === tab.id
-                      ? `${isDarkMode ? 'border-blue-400 text-blue-400' : 'border-amber-600 text-amber-700'} font-medium`
-                      : `border-transparent ${isDarkMode ? 'text-gray-400 hover:text-gray-200' : 'text-amber-600 hover:text-amber-800'}`
+                      ? `${isDarkMode ? 'border-cyan-400 text-cyan-400 bg-cyan-400/10' : 'border-orange-600 text-orange-700 bg-orange-100/50'} font-medium shadow-lg`
+                      : `border-transparent ${isDarkMode ? 'text-gray-400 hover:text-cyan-300 hover:bg-gray-800/50' : 'text-amber-600 hover:text-orange-700 hover:bg-orange-50'}`
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -108,36 +118,36 @@ function App() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-8">
-        {activeTab === 'home' && <HomeTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} />}
-        {activeTab === 'getting-started' && <GettingStartedTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} copyToClipboard={copyToClipboard} />}
-        {activeTab === 'priority-downloads' && <PriorityDownloadsTab isDarkMode={isDarkMode} cardClasses={cardClasses} copyToClipboard={copyToClipboard} />}
-        {activeTab === 'tools-setup' && <ToolsSetupTab isDarkMode={isDarkMode} cardClasses={cardClasses} copyToClipboard={copyToClipboard} />}
+        {activeTab === 'home' && <HomeTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} vibrantAccentClasses={vibrantAccentClasses} gradientTextClasses={gradientTextClasses} colorfulCardClasses={colorfulCardClasses} />}
+        {activeTab === 'getting-started' && <GettingStartedTab isDarkMode={isDarkMode} cardClasses={cardClasses} vibrantAccentClasses={vibrantAccentClasses} gradientTextClasses={gradientTextClasses} />}
+        {activeTab === 'priority-downloads' && <PriorityDownloadsTab isDarkMode={isDarkMode} cardClasses={cardClasses} vibrantAccentClasses={vibrantAccentClasses} gradientTextClasses={gradientTextClasses} copyToClipboard={copyToClipboard} />}
+        {activeTab === 'tools-setup' && <ToolsSetupTab isDarkMode={isDarkMode} cardClasses={cardClasses} vibrantAccentClasses={vibrantAccentClasses} gradientTextClasses={gradientTextClasses} copyToClipboard={copyToClipboard} />}
         {activeTab === 'learning-path' && <LearningPathTab isDarkMode={isDarkMode} copyToClipboard={copyToClipboard} />}
-        {activeTab === 'advanced-tips' && <AdvancedTipsTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} copyToClipboard={copyToClipboard} />}
-        {activeTab === 'success-stories' && <SuccessStoriesTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} />}
-        {activeTab === 'resources' && <ResourcesTab isDarkMode={isDarkMode} cardClasses={cardClasses} copyToClipboard={copyToClipboard} />}
+        {activeTab === 'advanced-tips' && <AdvancedTipsTab isDarkMode={isDarkMode} cardClasses={cardClasses} vibrantAccentClasses={vibrantAccentClasses} gradientTextClasses={gradientTextClasses} copyToClipboard={copyToClipboard} />}
+        {activeTab === 'success-stories' && <SuccessStoriesTab isDarkMode={isDarkMode} cardClasses={cardClasses} vibrantAccentClasses={vibrantAccentClasses} gradientTextClasses={gradientTextClasses} />}
+        {activeTab === 'resources' && <ResourcesTab isDarkMode={isDarkMode} cardClasses={cardClasses} gradientTextClasses={gradientTextClasses} copyToClipboard={copyToClipboard} />}
       </main>
       <Toaster />
     </div>
   )
 }
 
-function HomeTab({ isDarkMode, cardClasses, accentClasses }: { isDarkMode: boolean, cardClasses: string, accentClasses: string }) {
+function HomeTab({ isDarkMode, cardClasses, accentClasses, vibrantAccentClasses, gradientTextClasses, colorfulCardClasses }: { isDarkMode: boolean, cardClasses: string, accentClasses: string, vibrantAccentClasses: string, gradientTextClasses: string, colorfulCardClasses: string }) {
   return (
     <div className="space-y-8">
       {/* Hero Section */}
       <div className={`rounded-xl p-8 ${cardClasses} border`}>
         <div className="text-center space-y-4">
-          <h2 className="text-4xl font-bold">Hey Young Nigerian Tech Professional!</h2>
-          <p className={`text-xl ${accentClasses}`}>Got Internet? Download These Videos Fast Before You Get Disconnected!</p>
+          <h2 className={`text-4xl font-bold ${gradientTextClasses}`}>Hey Young Nigerian Tech Professional!</h2>
+          <p className={`text-xl ${vibrantAccentClasses} font-semibold`}>Got Internet? Download These Videos Fast Before You Get Disconnected!</p>
           <p className="text-lg opacity-80">The Ultimate Survival Guide for Aspiring Nigerian Developers Who Refuse to Let Bad Infrastructure Kill Their Dreams</p>
         </div>
       </div>
 
       {/* Data Cost Warning */}
-      <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-orange-900/20 border-orange-700' : 'bg-orange-100 border-orange-300'} border`}>
-          <h3 className="font-semibold text-orange-500 mb-2">💰 Smart Data Usage Strategy</h3>
+      <div className={`rounded-xl p-6 ${colorfulCardClasses} border-2 shadow-lg`}>
+        <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-gradient-to-r from-orange-900/30 to-red-900/30 border-orange-400' : 'bg-gradient-to-r from-orange-100 to-yellow-100 border-orange-400'} border-2`}>
+          <h3 className="font-semibold text-orange-400 mb-2 text-lg">💰 Smart Data Usage Strategy</h3>
           <p className="text-sm">
             We know data is expensive in Nigeria. This guide focuses on <strong>selective downloading</strong> - 
             choose exactly what you need, when you need it. No automatic bulk downloads that waste your precious data.
@@ -152,7 +162,7 @@ function HomeTab({ isDarkMode, cardClasses, accentClasses }: { isDarkMode: boole
             <Users className={`w-6 h-6 ${accentClasses}`} />
           </div>
           <div className="flex-1">
-            <h3 className="text-2xl font-bold mb-3">Meet Ada Okafor</h3>
+            <h3 className={`text-2xl font-bold mb-3 ${gradientTextClasses}`}>Meet Ada Okafor</h3>
             <p className="text-lg mb-4">A 23-year-old computer science graduate from University of Lagos who went from frustrated student to senior developer at Paystack in 18 months.</p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-gray-800' : 'bg-amber-50'}`}>
@@ -175,26 +185,26 @@ function HomeTab({ isDarkMode, cardClasses, accentClasses }: { isDarkMode: boole
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className={`rounded-xl p-6 ${cardClasses} border text-center`}>
-          <Download className={`w-8 h-8 ${isDarkMode ? 'text-blue-400' : 'text-amber-700'} mx-auto mb-3`} />
-          <h3 className="text-2xl font-bold">500+</h3>
+        <div className={`rounded-xl p-6 ${colorfulCardClasses} border-2 text-center shadow-lg hover:shadow-xl transition-all duration-300`}>
+          <Download className={`w-8 h-8 ${isDarkMode ? 'text-cyan-400' : 'text-orange-600'} mx-auto mb-3`} />
+          <h3 className={`text-2xl font-bold ${gradientTextClasses}`}>500+</h3>
           <p className="opacity-80">Hours of Free Programming Education</p>
         </div>
-        <div className={`rounded-xl p-6 ${cardClasses} border text-center`}>
-          <Youtube className={`w-8 h-8 ${isDarkMode ? 'text-blue-400' : 'text-amber-700'} mx-auto mb-3`} />
-          <h3 className="text-2xl font-bold">15+</h3>
+        <div className={`rounded-xl p-6 ${colorfulCardClasses} border-2 text-center shadow-lg hover:shadow-xl transition-all duration-300`}>
+          <Youtube className={`w-8 h-8 ${isDarkMode ? 'text-red-400' : 'text-red-600'} mx-auto mb-3`} />
+          <h3 className={`text-2xl font-bold ${gradientTextClasses}`}>15+</h3>
           <p className="opacity-80">Major Educational Platforms</p>
         </div>
-        <div className={`rounded-xl p-6 ${cardClasses} border text-center`}>
-          <Trophy className={`w-8 h-8 ${isDarkMode ? 'text-blue-400' : 'text-amber-700'} mx-auto mb-3`} />
-          <h3 className="text-2xl font-bold">20+</h3>
+        <div className={`rounded-xl p-6 ${colorfulCardClasses} border-2 text-center shadow-lg hover:shadow-xl transition-all duration-300`}>
+          <Trophy className={`w-8 h-8 ${isDarkMode ? 'text-yellow-400' : 'text-yellow-600'} mx-auto mb-3`} />
+          <h3 className={`text-2xl font-bold ${gradientTextClasses}`}>20+</h3>
           <p className="opacity-80">Download Techniques & Tools</p>
         </div>
       </div>
 
       {/* The Problem */}
       <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <h3 className="text-2xl font-bold mb-4">The Brutal Reality</h3>
+        <h3 className={`text-2xl font-bold mb-4 ${gradientTextClasses}`}>The Brutal Reality</h3>
         <p className="text-lg mb-4">You're trying to build a tech career in a country where the internet treats you like a side chick. One minute it's fast, the next minute it's gone.</p>
         <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-blue-900/20 border-blue-700' : 'bg-amber-100 border-amber-300'} border`}>
           <p className="font-semibold">But here's what successful Nigerian developers know:</p>
@@ -205,12 +215,12 @@ function HomeTab({ isDarkMode, cardClasses, accentClasses }: { isDarkMode: boole
   )
 }
 
-function GettingStartedTab({ isDarkMode, cardClasses }: { isDarkMode: boolean, cardClasses: string, accentClasses: string, copyToClipboard: (text: string) => void }) {
+function GettingStartedTab({ isDarkMode, cardClasses, vibrantAccentClasses, gradientTextClasses }: { isDarkMode: boolean, cardClasses: string, vibrantAccentClasses: string, gradientTextClasses: string }) {
   return (
     <div className="space-y-8">
       <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <h2 className="text-3xl font-bold mb-4">The "Internet Window" Strategy</h2>
-        <p className="text-lg mb-6">Download Fast, Learn Forever</p>
+        <h2 className={`text-3xl font-bold mb-4 ${gradientTextClasses}`}>The "Internet Window" Strategy</h2>
+        <p className={`text-lg mb-6 ${vibrantAccentClasses} font-semibold`}>Download Fast, Learn Forever</p>
         <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-yellow-900/20 border-yellow-700' : 'bg-yellow-100 border-yellow-300'} border`}>
           <p className="font-semibold text-yellow-500">⚠️ Critical Strategy</p>
           <p className="mt-2">When your internet is fast, you have maybe 30 minutes to 2 hours before something goes wrong. You need a priority list.</p>
@@ -351,12 +361,12 @@ function GettingStartedTab({ isDarkMode, cardClasses }: { isDarkMode: boolean, c
   )
 }
 
-function PriorityDownloadsTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, copyToClipboard: (text: string) => void }) {
+function PriorityDownloadsTab({ isDarkMode, cardClasses, vibrantAccentClasses, gradientTextClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, vibrantAccentClasses: string, gradientTextClasses: string, copyToClipboard: (text: string) => void }) {
   return (
     <div className="space-y-8">
       <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <h2 className="text-3xl font-bold mb-4">Essential Downloads</h2>
-        <p className="text-lg mb-4">What to Grab First When Your Internet is Flying</p>
+        <h2 className={`text-3xl font-bold mb-4 ${gradientTextClasses}`}>Essential Downloads</h2>
+        <p className={`text-lg mb-4 ${vibrantAccentClasses} font-semibold`}>What to Grab First When Your Internet is Flying</p>
         
         {/* Priority #1: freeCodeCamp */}
         <div className="space-y-4">
@@ -585,12 +595,12 @@ function PriorityDownloadsTab({ isDarkMode, cardClasses, copyToClipboard }: { is
   )
 }
 
-function ToolsSetupTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, copyToClipboard: (text: string) => void }) {
+function ToolsSetupTab({ isDarkMode, cardClasses, vibrantAccentClasses, gradientTextClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, vibrantAccentClasses: string, gradientTextClasses: string, copyToClipboard: (text: string) => void }) {
   return (
     <div className="space-y-8">
       <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <h2 className="text-3xl font-bold mb-4">Download Tools Setup</h2>
-        <p className="text-lg mb-4">Your Weapons Against Bad Internet</p>
+        <h2 className={`text-3xl font-bold mb-4 ${gradientTextClasses}`}>Download Tools Setup</h2>
+        <p className={`text-lg mb-4 ${vibrantAccentClasses} font-semibold`}>Your Weapons Against Bad Internet</p>
         
         <div className="space-y-6">
           <div>
@@ -1071,12 +1081,12 @@ function LearningPathTab({ isDarkMode, copyToClipboard }: { isDarkMode: boolean,
   )
 }
 
-function AdvancedTipsTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, accentClasses: string, copyToClipboard: (text: string) => void }) {
+function AdvancedTipsTab({ isDarkMode, cardClasses, vibrantAccentClasses, gradientTextClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, vibrantAccentClasses: string, gradientTextClasses: string, copyToClipboard: (text: string) => void }) {
   return (
     <div className="space-y-8">
       <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <h2 className="text-3xl font-bold mb-4">Smart Download Strategies</h2>
-        <p className="text-lg mb-4">Data-conscious techniques for Nigerian developers</p>
+        <h2 className={`text-3xl font-bold mb-4 ${gradientTextClasses}`}>Smart Download Strategies</h2>
+        <p className={`text-lg mb-4 ${vibrantAccentClasses} font-semibold`}>Data-conscious techniques for Nigerian developers</p>
         <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-orange-900/20 border-orange-700' : 'bg-orange-100 border-orange-300'} border`}>
           <p className="font-semibold text-orange-500">💰 Data Budget First</p>
           <p className="mt-2">Every download should be intentional. These advanced techniques help you get maximum learning from minimum data usage.</p>
@@ -1191,12 +1201,12 @@ function AdvancedTipsTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkM
   )
 }
 
-function SuccessStoriesTab({ isDarkMode, cardClasses }: { isDarkMode: boolean, cardClasses: string, accentClasses: string }) {
+function SuccessStoriesTab({ isDarkMode, cardClasses, vibrantAccentClasses, gradientTextClasses }: { isDarkMode: boolean, cardClasses: string, vibrantAccentClasses: string, gradientTextClasses: string }) {
   return (
     <div className="space-y-8">
       <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <h2 className="text-3xl font-bold mb-4">Success Stories</h2>
-        <p className="text-lg mb-4">Real Nigerian developers who made it using smart downloading strategies</p>
+        <h2 className={`text-3xl font-bold mb-4 ${gradientTextClasses}`}>Success Stories</h2>
+        <p className={`text-lg mb-4 ${vibrantAccentClasses} font-semibold`}>Real Nigerian developers who made it using smart downloading strategies</p>
         <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-green-900/20 border-green-700' : 'bg-green-100 border-green-300'} border`}>
           <p className="font-semibold text-green-500">🎉 From Zero to Hero</p>
           <p className="mt-2">These are real stories from developers who started with limited data budgets but unlimited determination.</p>
@@ -1322,12 +1332,12 @@ function SuccessStoriesTab({ isDarkMode, cardClasses }: { isDarkMode: boolean, c
   )
 }
 
-function ResourcesTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, copyToClipboard: (text: string) => void }) {
+function ResourcesTab({ isDarkMode, cardClasses, gradientTextClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, gradientTextClasses: string, copyToClipboard: (text: string) => void }) {
   return (
     <div className="space-y-8">
       <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <h2 className="text-3xl font-bold mb-4">Essential Resources</h2>
-        <p className="text-lg mb-4">Curated list of the best programming resources for Nigerian developers</p>
+        <h2 className={`text-3xl font-bold mb-4 ${gradientTextClasses}`}>Essential Resources</h2>
+        <p className="text-lg mb-4 text-orange-500 font-semibold">Curated list of the best programming resources for Nigerian developers</p>
         <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-orange-900/20 border-orange-700' : 'bg-orange-100 border-orange-300'} border`}>
           <h4 className="font-semibold text-orange-500 mb-2">💰 Smart Selection Strategy</h4>
           <p className="text-sm">Each resource includes estimated data usage. Choose based on your budget and current learning goals.</p>
