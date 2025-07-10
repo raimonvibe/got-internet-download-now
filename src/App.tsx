@@ -780,8 +780,18 @@ function LearningPathTab({ isDarkMode, copyToClipboard }: { isDarkMode: boolean,
                   <Copy className="w-3 h-3" />
                 </button>
               </li>
-              <li>• HTML/CSS Crash Course (4 hours)</li>
-              <li>• Build your first simple website (Practice time)</li>
+              <li className="flex items-center justify-between">
+                <span>• HTML/CSS Crash Course (4 hours)</span>
+                <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=a_iQb1lnAEQ"')} className="p-1 hover:bg-gray-600 rounded">
+                  <Copy className="w-3 h-3" />
+                </button>
+              </li>
+              <li className="flex items-center justify-between">
+                <span>• Build your first simple website (Practice time)</span>
+                <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=916GWv2Qs08"')} className="p-1 hover:bg-gray-600 rounded">
+                  <Copy className="w-3 h-3" />
+                </button>
+              </li>
             </ul>
           </div>
           
@@ -825,7 +835,12 @@ function LearningPathTab({ isDarkMode, copyToClipboard }: { isDarkMode: boolean,
                   <Copy className="w-3 h-3" />
                 </button>
               </li>
-              <li>• Build 3-5 portfolio projects (Practice time)</li>
+              <li className="flex items-center justify-between">
+                <span>• Build 3-5 portfolio projects (Practice time)</span>
+                <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=xV7S8BhIeBo"')} className="p-1 hover:bg-gray-600 rounded">
+                  <Copy className="w-3 h-3" />
+                </button>
+              </li>
             </ul>
           </div>
 
@@ -910,9 +925,24 @@ function LearningPathTab({ isDarkMode, copyToClipboard }: { isDarkMode: boolean,
                   <Copy className="w-3 h-3" />
                 </button>
               </li>
-              <li>• Open Source Contributions (Ongoing)</li>
-              <li>• Mentoring Other Code Seekers (Ongoing)</li>
-              <li>• Building Commercial Applications (Ongoing)</li>
+              <li className="flex items-center justify-between">
+                <span>• Open Source Contributions (Ongoing)</span>
+                <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=yzeVMecydCE"')} className="p-1 hover:bg-gray-600 rounded">
+                  <Copy className="w-3 h-3" />
+                </button>
+              </li>
+              <li className="flex items-center justify-between">
+                <span>• Mentoring Other Code Seekers (Ongoing)</span>
+                <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=mklEhT_RLos"')} className="p-1 hover:bg-gray-600 rounded">
+                  <Copy className="w-3 h-3" />
+                </button>
+              </li>
+              <li className="flex items-center justify-between">
+                <span>• Building Commercial Applications (Ongoing)</span>
+                <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=poLzjLt2yqU"')} className="p-1 hover:bg-gray-600 rounded">
+                  <Copy className="w-3 h-3" />
+                </button>
+              </li>
               <li className="flex items-center justify-between">
                 <span>• Interview Preparation and Job Search (Ongoing)</span>
                 <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=1qw5ITr3k9E"')} className="p-1 hover:bg-gray-600 rounded">
