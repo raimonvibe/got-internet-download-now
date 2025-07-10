@@ -199,7 +199,7 @@ function App() {
               </li>
             </ul>
             <div className={`footer-copyright text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
-              <p>&copy; 2025 Nigerian Payment Solutions Guide. Built for Nigerian developers, by developers.</p>
+              <p>&copy; 2025 Code Quest Academy. Built for Nigerian developers, by developers.</p>
             </div>
           </div>
         </div>
