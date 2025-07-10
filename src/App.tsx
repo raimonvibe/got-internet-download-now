@@ -112,7 +112,7 @@ function App() {
         {activeTab === 'getting-started' && <GettingStartedTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} copyToClipboard={copyToClipboard} />}
         {activeTab === 'priority-downloads' && <PriorityDownloadsTab isDarkMode={isDarkMode} cardClasses={cardClasses} copyToClipboard={copyToClipboard} />}
         {activeTab === 'tools-setup' && <ToolsSetupTab isDarkMode={isDarkMode} cardClasses={cardClasses} copyToClipboard={copyToClipboard} />}
-        {activeTab === 'learning-path' && <LearningPathTab isDarkMode={isDarkMode} cardClasses={cardClasses} copyToClipboard={copyToClipboard} />}
+        {activeTab === 'learning-path' && <LearningPathTab isDarkMode={isDarkMode} copyToClipboard={copyToClipboard} />}
         {activeTab === 'advanced-tips' && <AdvancedTipsTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} copyToClipboard={copyToClipboard} />}
         {activeTab === 'success-stories' && <SuccessStoriesTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} />}
         {activeTab === 'resources' && <ResourcesTab isDarkMode={isDarkMode} cardClasses={cardClasses} copyToClipboard={copyToClipboard} />}
@@ -491,48 +491,90 @@ function PriorityDownloadsTab({ isDarkMode, cardClasses, copyToClipboard }: { is
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
               <div className="space-y-2">
                 <div className="text-sm">
-                  <a href="https://www.youtube.com/@coreyms" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline font-semibold">
-                    Corey Schafer (@coreyms)
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                  <p className="text-xs opacity-70">1.0M+ subscribers • Python & Django</p>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <a href="https://www.youtube.com/@coreyms" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline font-semibold">
+                        Corey Schafer (@coreyms)
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                      <p className="text-xs opacity-70">1.0M+ subscribers • Python & Django</p>
+                    </div>
+                    <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/@coreyms"')} className="p-1 hover:bg-gray-600 rounded">
+                      <Copy className="w-3 h-3" />
+                    </button>
+                  </div>
                 </div>
                 <div className="text-sm">
-                  <a href="https://www.youtube.com/@sentdex" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline font-semibold">
-                    Sentdex (@sentdex)
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                  <p className="text-xs opacity-70">1.2M+ subscribers • ML & AI</p>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <a href="https://www.youtube.com/@sentdex" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline font-semibold">
+                        Sentdex (@sentdex)
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                      <p className="text-xs opacity-70">1.2M+ subscribers • ML & AI</p>
+                    </div>
+                    <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/@sentdex"')} className="p-1 hover:bg-gray-600 rounded">
+                      <Copy className="w-3 h-3" />
+                    </button>
+                  </div>
                 </div>
                 <div className="text-sm">
-                  <a href="https://www.youtube.com/@netninja" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline font-semibold">
-                    The Net Ninja (@netninja)
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                  <p className="text-xs opacity-70">1.1M+ subscribers • Web Dev</p>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <a href="https://www.youtube.com/@netninja" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline font-semibold">
+                        The Net Ninja (@netninja)
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                      <p className="text-xs opacity-70">1.1M+ subscribers • Web Dev</p>
+                    </div>
+                    <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/@netninja"')} className="p-1 hover:bg-gray-600 rounded">
+                      <Copy className="w-3 h-3" />
+                    </button>
+                  </div>
                 </div>
               </div>
               <div className="space-y-2">
                 <div className="text-sm">
-                  <a href="https://www.youtube.com/@academind" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline font-semibold">
-                    Academind (@academind)
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                  <p className="text-xs opacity-70">900K+ subscribers • Modern Web</p>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <a href="https://www.youtube.com/@academind" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline font-semibold">
+                        Academind (@academind)
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                      <p className="text-xs opacity-70">900K+ subscribers • Modern Web</p>
+                    </div>
+                    <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/@academind"')} className="p-1 hover:bg-gray-600 rounded">
+                      <Copy className="w-3 h-3" />
+                    </button>
+                  </div>
                 </div>
                 <div className="text-sm">
-                  <a href="https://www.youtube.com/@3blue1brown" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline font-semibold">
-                    3Blue1Brown (@3blue1brown)
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                  <p className="text-xs opacity-70">5M+ subscribers • Math</p>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <a href="https://www.youtube.com/@3blue1brown" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline font-semibold">
+                        3Blue1Brown (@3blue1brown)
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                      <p className="text-xs opacity-70">5M+ subscribers • Math</p>
+                    </div>
+                    <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/@3blue1brown"')} className="p-1 hover:bg-gray-600 rounded">
+                      <Copy className="w-3 h-3" />
+                    </button>
+                  </div>
                 </div>
                 <div className="text-sm">
-                  <a href="https://www.youtube.com/@beneater" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline font-semibold">
-                    Ben Eater (@beneater)
-                    <ExternalLink className="w-3 h-3" />
-                  </a>
-                  <p className="text-xs opacity-70">1M+ subscribers • Computer Engineering</p>
+                  <div className="flex items-center justify-between">
+                    <div>
+                      <a href="https://www.youtube.com/@beneater" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline font-semibold">
+                        Ben Eater (@beneater)
+                        <ExternalLink className="w-3 h-3" />
+                      </a>
+                      <p className="text-xs opacity-70">1M+ subscribers • Computer Engineering</p>
+                    </div>
+                    <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/@beneater"')} className="p-1 hover:bg-gray-600 rounded">
+                      <Copy className="w-3 h-3" />
+                    </button>
+                  </div>
                 </div>
               </div>
             </div>
@@ -672,16 +714,47 @@ function ToolsSetupTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkMod
   )
 }
 
-function LearningPathTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, copyToClipboard: (text: string) => void }) {
+function LearningPathTab({ isDarkMode, copyToClipboard }: { isDarkMode: boolean, copyToClipboard: (text: string) => void }) {
   return (
     <div className="space-y-8">
-      <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <h2 className="text-3xl font-bold mb-4">The Four Phases of Code Seeker Evolution</h2>
-        <p className="text-lg mb-4">Your structured path from beginner to professional developer</p>
-        <div className="space-y-6">
-          <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-blue-900/20 border-blue-700' : 'bg-blue-100 border-blue-300'} border`}>
-            <h4 className="font-semibold text-blue-500 mb-2">Phase 1: The Awakening (Weeks 1-4)</h4>
-            <p className="text-sm mb-3">Building Your Foundation - 33 hours total</p>
+      <div className="text-center mb-8">
+        <h2 className="text-4xl font-bold mb-4 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+          The Four Phases of Code Seeker Evolution
+        </h2>
+        <p className="text-xl opacity-90 max-w-3xl mx-auto">Your structured path from beginner to professional developer</p>
+        <div className="mt-6 flex justify-center">
+          <div className="flex items-center space-x-4 text-sm opacity-70">
+            <div className="flex items-center">
+              <div className="w-3 h-3 bg-blue-500 rounded-full mr-2"></div>
+              <span>Foundation</span>
+            </div>
+            <div className="flex items-center">
+              <div className="w-3 h-3 bg-green-500 rounded-full mr-2"></div>
+              <span>Building</span>
+            </div>
+            <div className="flex items-center">
+              <div className="w-3 h-3 bg-purple-500 rounded-full mr-2"></div>
+              <span>Specialization</span>
+            </div>
+            <div className="flex items-center">
+              <div className="w-3 h-3 bg-orange-500 rounded-full mr-2"></div>
+              <span>Mastery</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className={`rounded-xl p-6 ${isDarkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border`}>
+        <div className="space-y-8">
+          <div className={`p-6 rounded-xl ${isDarkMode ? 'bg-blue-900/20 border-blue-700' : 'bg-blue-100 border-blue-300'} border-2 shadow-lg hover:shadow-xl transition-shadow duration-300`}>
+            <div className="flex items-center justify-between mb-4">
+              <h4 className="text-2xl font-bold text-blue-500">Phase 1: The Awakening</h4>
+              <div className="text-right">
+                <div className="text-sm opacity-70">Weeks 1-4</div>
+                <div className="text-xs opacity-60">33 hours total</div>
+              </div>
+            </div>
+            <p className="text-sm opacity-80 mb-4 italic">Building Your Foundation • Essential programming concepts</p>
             <ul className="text-sm space-y-2">
               <li className="flex items-center justify-between">
                 <span>• CS50 Lecture 0: Computer Science (2 hours)</span>
@@ -712,9 +785,15 @@ function LearningPathTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkM
             </ul>
           </div>
           
-          <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-green-900/20 border-green-700' : 'bg-green-100 border-green-300'} border`}>
-            <h4 className="font-semibold text-green-500 mb-2">Phase 2: The Strengthening (Weeks 5-12)</h4>
-            <p className="text-sm mb-3">Developing Core Skills - 55 hours total</p>
+          <div className={`p-6 rounded-xl ${isDarkMode ? 'bg-green-900/20 border-green-700' : 'bg-green-100 border-green-300'} border-2 shadow-lg hover:shadow-xl transition-shadow duration-300`}>
+            <div className="flex items-center justify-between mb-4">
+              <h4 className="text-2xl font-bold text-green-500">Phase 2: The Strengthening</h4>
+              <div className="text-right">
+                <div className="text-sm opacity-70">Weeks 5-12</div>
+                <div className="text-xs opacity-60">55 hours total</div>
+              </div>
+            </div>
+            <p className="text-sm opacity-80 mb-4 italic">Developing Core Skills • Advanced programming concepts</p>
             <ul className="text-sm space-y-2">
               <li className="flex items-center justify-between">
                 <span>• Complete CS50 Course (25 hours)</span>
@@ -750,9 +829,15 @@ function LearningPathTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkM
             </ul>
           </div>
 
-          <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-purple-900/20 border-purple-700' : 'bg-purple-100 border-purple-300'} border`}>
-            <h4 className="font-semibold text-purple-500 mb-2">Phase 3: The Specialization (Weeks 13-24)</h4>
-            <p className="text-sm mb-3">Choose Your Path - 60+ hours total</p>
+          <div className={`p-6 rounded-xl ${isDarkMode ? 'bg-purple-900/20 border-purple-700' : 'bg-purple-100 border-purple-300'} border-2 shadow-lg hover:shadow-xl transition-shadow duration-300`}>
+            <div className="flex items-center justify-between mb-4">
+              <h4 className="text-2xl font-bold text-purple-500">Phase 3: The Specialization</h4>
+              <div className="text-right">
+                <div className="text-sm opacity-70">Weeks 13-24</div>
+                <div className="text-xs opacity-60">60+ hours total</div>
+              </div>
+            </div>
+            <p className="text-sm opacity-80 mb-4 italic">Choose Your Path • Specialized development tracks</p>
             <div className="grid md:grid-cols-2 gap-3">
               <div>
                 <h5 className="font-medium text-purple-400 mb-1">Web Development Track:</h5>
@@ -803,9 +888,15 @@ function LearningPathTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkM
             </div>
           </div>
 
-          <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-orange-900/20 border-orange-700' : 'bg-orange-100 border-orange-300'} border`}>
-            <h4 className="font-semibold text-orange-500 mb-2">Phase 4: The Mastery (Weeks 25+)</h4>
-            <p className="text-sm mb-3">Professional Development - Ongoing</p>
+          <div className={`p-6 rounded-xl ${isDarkMode ? 'bg-orange-900/20 border-orange-700' : 'bg-orange-100 border-orange-300'} border-2 shadow-lg hover:shadow-xl transition-shadow duration-300`}>
+            <div className="flex items-center justify-between mb-4">
+              <h4 className="text-2xl font-bold text-orange-500">Phase 4: The Mastery</h4>
+              <div className="text-right">
+                <div className="text-sm opacity-70">Weeks 25+</div>
+                <div className="text-xs opacity-60">Ongoing</div>
+              </div>
+            </div>
+            <p className="text-sm opacity-80 mb-4 italic">Professional Development • Advanced career skills</p>
             <ul className="text-sm space-y-2">
               <li className="flex items-center justify-between">
                 <span>• System Design and Architecture (20+ hours)</span>
@@ -833,47 +924,115 @@ function LearningPathTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkM
         </div>
       </div>
 
-      {/* Transformation Timeline */}
-      <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <h2 className="text-3xl font-bold mb-4">The Transformation Timeline</h2>
-        <div className="space-y-4">
-          <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-blue-900/20 border-blue-700' : 'bg-blue-100 border-blue-300'} border`}>
-            <h4 className="font-semibold text-blue-500">Month 1-3: Foundation Phase</h4>
-            <ul className="text-sm mt-2 space-y-1">
-              <li>✅ Downloaded and completed basic courses</li>
-              <li>✅ Can build simple websites and write basic programs</li>
-              <li>✅ Understand fundamental programming concepts</li>
-              <li>✅ Established sustainable learning routine</li>
+      <div className={`p-8 rounded-xl ${isDarkMode ? 'bg-gray-800' : 'bg-white'} border-2 shadow-lg mt-12`}>
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold mb-2 bg-gradient-to-r from-green-400 to-blue-500 bg-clip-text text-transparent">
+            The Transformation Timeline
+          </h2>
+          <p className="text-lg opacity-80">Track your progress through each milestone</p>
+        </div>
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className={`p-6 rounded-xl ${isDarkMode ? 'bg-blue-900/20 border-blue-700' : 'bg-blue-100 border-blue-300'} border-2 hover:shadow-lg transition-shadow duration-300`}>
+            <div className="flex items-center mb-4">
+              <div className="w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">1</div>
+              <h4 className="font-bold text-blue-500 text-lg">Foundation Phase</h4>
+            </div>
+            <p className="text-xs opacity-70 mb-3">Month 1-3</p>
+            <ul className="text-sm space-y-2">
+              <li className="flex items-center">
+                <span className="text-green-500 mr-2">✅</span>
+                <span>Downloaded and completed basic courses</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-green-500 mr-2">✅</span>
+                <span>Can build simple websites and write basic programs</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-green-500 mr-2">✅</span>
+                <span>Understand fundamental programming concepts</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-green-500 mr-2">✅</span>
+                <span>Established sustainable learning routine</span>
+              </li>
             </ul>
           </div>
           
-          <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-green-900/20 border-green-700' : 'bg-green-100 border-green-300'} border`}>
-            <h4 className="font-semibold text-green-500">Month 4-6: Building Phase</h4>
-            <ul className="text-sm mt-2 space-y-1">
-              <li>🚀 Creating real projects using downloaded tutorials</li>
-              <li>🚀 Specialized in 1-2 programming languages</li>
-              <li>🚀 Contributing to open-source projects</li>
-              <li>🚀 Built portfolio of applications</li>
+          <div className={`p-6 rounded-xl ${isDarkMode ? 'bg-green-900/20 border-green-700' : 'bg-green-100 border-green-300'} border-2 hover:shadow-lg transition-shadow duration-300`}>
+            <div className="flex items-center mb-4">
+              <div className="w-8 h-8 bg-green-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">2</div>
+              <h4 className="font-bold text-green-500 text-lg">Building Phase</h4>
+            </div>
+            <p className="text-xs opacity-70 mb-3">Month 4-6</p>
+            <ul className="text-sm space-y-2">
+              <li className="flex items-center">
+                <span className="text-yellow-500 mr-2">🚀</span>
+                <span>Creating real projects using downloaded tutorials</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-yellow-500 mr-2">🚀</span>
+                <span>Specialized in 1-2 programming languages</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-yellow-500 mr-2">🚀</span>
+                <span>Contributing to open-source projects</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-yellow-500 mr-2">🚀</span>
+                <span>Built portfolio of applications</span>
+              </li>
             </ul>
           </div>
 
-          <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-purple-900/20 border-purple-700' : 'bg-purple-100 border-purple-300'} border`}>
-            <h4 className="font-semibold text-purple-500">Month 7-12: Professional Phase</h4>
-            <ul className="text-sm mt-2 space-y-1">
-              <li>💼 Applying for junior developer positions</li>
-              <li>💼 Freelancing and earning money from coding</li>
-              <li>💼 Teaching others what you've learned</li>
-              <li>💼 Building complex, full-stack applications</li>
+          <div className={`p-6 rounded-xl ${isDarkMode ? 'bg-purple-900/20 border-purple-700' : 'bg-purple-100 border-purple-300'} border-2 hover:shadow-lg transition-shadow duration-300`}>
+            <div className="flex items-center mb-4">
+              <div className="w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">3</div>
+              <h4 className="font-bold text-purple-500 text-lg">Professional Phase</h4>
+            </div>
+            <p className="text-xs opacity-70 mb-3">Month 7-12</p>
+            <ul className="text-sm space-y-2">
+              <li className="flex items-center">
+                <span className="text-purple-500 mr-2">💼</span>
+                <span>Applying for junior developer positions</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-purple-500 mr-2">💼</span>
+                <span>Freelancing and earning money from coding</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-purple-500 mr-2">💼</span>
+                <span>Teaching others what you've learned</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-purple-500 mr-2">💼</span>
+                <span>Building complex, full-stack applications</span>
+              </li>
             </ul>
           </div>
 
-          <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-orange-900/20 border-orange-700' : 'bg-orange-100 border-orange-300'} border`}>
-            <h4 className="font-semibold text-orange-500">Year 2+: Mastery Phase</h4>
-            <ul className="text-sm mt-2 space-y-1">
-              <li>🏆 Working as professional developer</li>
-              <li>🏆 Earning good salary in tech</li>
-              <li>🏆 Mentoring other Code Seekers</li>
-              <li>🏆 Contributing to global tech community</li>
+          <div className={`p-6 rounded-xl ${isDarkMode ? 'bg-orange-900/20 border-orange-700' : 'bg-orange-100 border-orange-300'} border-2 hover:shadow-lg transition-shadow duration-300`}>
+            <div className="flex items-center mb-4">
+              <div className="w-8 h-8 bg-orange-500 rounded-full flex items-center justify-center text-white font-bold text-sm mr-3">4</div>
+              <h4 className="font-bold text-orange-500 text-lg">Mastery Phase</h4>
+            </div>
+            <p className="text-xs opacity-70 mb-3">Year 2+</p>
+            <ul className="text-sm space-y-2">
+              <li className="flex items-center">
+                <span className="text-orange-500 mr-2">🏆</span>
+                <span>Working as professional developer</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-orange-500 mr-2">🏆</span>
+                <span>Earning good salary in tech</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-orange-500 mr-2">🏆</span>
+                <span>Mentoring other Code Seekers</span>
+              </li>
+              <li className="flex items-center">
+                <span className="text-orange-500 mr-2">🏆</span>
+                <span>Contributing to global tech community</span>
+              </li>
             </ul>
           </div>
         </div>
