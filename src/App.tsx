@@ -15,7 +15,9 @@ import {
   Code,
   Trophy,
   ExternalLink,
-  GitBranch
+  GitBranch,
+  Bot,
+  Terminal
 } from 'lucide-react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { 
@@ -30,6 +32,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons'
 import { toast } from 'sonner'
 import { Toaster } from '@/components/ui/sonner'
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog'
 import './App.css'
 
 function App() {
@@ -405,6 +408,151 @@ function GettingStartedTab({ isDarkMode, cardClasses, vibrantAccentClasses, grad
     ├── Portfolio_Projects/
     ├── Real_World_Apps/
     └── Interview_Prep/`}</pre>
+          </div>
+          
+          {/* AI Modal Trigger */}
+          <div className="flex items-center justify-between">
+            <p className="text-sm opacity-70">
+              Too lazy to create all these folders manually? 
+            </p>
+            <Dialog>
+              <DialogTrigger asChild>
+                <button className={`flex items-center gap-2 px-4 py-2 rounded-lg ${isDarkMode ? 'bg-purple-600 hover:bg-purple-700 text-white' : 'bg-purple-500 hover:bg-purple-600 text-white'} transition-colors font-medium`}>
+                  <Bot className="w-4 h-4" />
+                  🤖 Let AI create this for you!
+                </button>
+              </DialogTrigger>
+              <DialogContent className={`max-w-2xl ${isDarkMode ? 'bg-gray-900 border-gray-700 text-white' : 'bg-white border-gray-200 text-gray-900'}`}>
+                <DialogHeader>
+                  <DialogTitle className={`text-2xl font-bold ${isDarkMode ? 'text-white' : 'text-gray-900'} flex items-center gap-2`}>
+                    <Bot className="w-6 h-6 text-purple-500" />
+                    AI-Powered Folder Creation 🚀
+                  </DialogTitle>
+                </DialogHeader>
+                
+                <div className="space-y-6">
+                  <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-blue-900/20 border-blue-700' : 'bg-blue-100 border-blue-300'} border`}>
+                    <h3 className="font-semibold text-blue-400 mb-2">Step 1: Copy the folder structure</h3>
+                    <p className="text-sm mb-3">
+                      Copy this folder structure and paste it into ChatGPT, Gemini, or any AI assistant:
+                    </p>
+                    <div className={`p-3 rounded ${isDarkMode ? 'bg-gray-800' : 'bg-white'} border font-mono text-xs`}>
+                      <pre>{`~/OfflineLearning/
+├── 01_Priority_Downloads/
+│   ├── freeCodeCamp_Python/
+│   ├── CS50_Harvard/
+│   ├── MIT_OpenCourseWare/
+│   └── Programming_with_Mosh/
+├── 02_Specialization/
+│   ├── Web_Development/
+│   ├── Mobile_Apps/
+│   ├── Data_Science/
+│   └── Game_Development/
+├── 03_Advanced_Topics/
+│   ├── Algorithms/
+│   ├── System_Design/
+│   └── Machine_Learning/
+└── 04_Project_Tutorials/
+    ├── Portfolio_Projects/
+    ├── Real_World_Apps/
+    └── Interview_Prep/`}</pre>
+                    </div>
+                    <button 
+                      onClick={() => {
+                        navigator.clipboard.writeText(`~/OfflineLearning/
+├── 01_Priority_Downloads/
+│   ├── freeCodeCamp_Python/
+│   ├── CS50_Harvard/
+│   ├── MIT_OpenCourseWare/
+│   └── Programming_with_Mosh/
+├── 02_Specialization/
+│   ├── Web_Development/
+│   ├── Mobile_Apps/
+│   ├── Data_Science/
+│   └── Game_Development/
+├── 03_Advanced_Topics/
+│   ├── Algorithms/
+│   ├── System_Design/
+│   └── Machine_Learning/
+└── 04_Project_Tutorials/
+    ├── Portfolio_Projects/
+    ├── Real_World_Apps/
+    └── Interview_Prep/`)
+                        toast.success('Copied to clipboard!', { duration: 2000 })
+                      }}
+                      className={`mt-2 flex items-center gap-2 px-3 py-1 rounded ${isDarkMode ? 'bg-blue-600 hover:bg-blue-700' : 'bg-blue-500 hover:bg-blue-600'} text-white text-sm transition-colors`}
+                    >
+                      <Copy className="w-3 h-3" />
+                      Copy Structure
+                    </button>
+                  </div>
+
+                  <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-green-900/20 border-green-700' : 'bg-green-100 border-green-300'} border`}>
+                    <h3 className="font-semibold text-green-400 mb-2">Step 2: Ask AI for terminal commands</h3>
+                    <p className="text-sm mb-3">
+                      Then ask your AI assistant: <em>"How do I generate these folders in my terminal?"</em>
+                    </p>
+                    <p className="text-xs opacity-70">
+                      The AI will give you the exact commands for your operating system!
+                    </p>
+                  </div>
+
+                  <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-purple-900/20 border-purple-700' : 'bg-purple-100 border-purple-300'} border`}>
+                    <h3 className="font-semibold text-purple-400 mb-3">Quick Commands (if you're impatient):</h3>
+                    
+                    <div className="space-y-3">
+                      <div>
+                        <h4 className="font-medium text-sm mb-1 flex items-center gap-2">
+                          <Terminal className="w-3 h-3" />
+                          Windows (Command Prompt/PowerShell):
+                        </h4>
+                        <div className={`p-2 rounded ${isDarkMode ? 'bg-gray-800' : 'bg-white'} border font-mono text-xs`}>
+                          <code>mkdir OfflineLearning && cd OfflineLearning && mkdir 01_Priority_Downloads 02_Specialization 03_Advanced_Topics 04_Project_Tutorials</code>
+                        </div>
+                        <button 
+                          onClick={() => {
+                            navigator.clipboard.writeText('mkdir OfflineLearning && cd OfflineLearning && mkdir 01_Priority_Downloads 02_Specialization 03_Advanced_Topics 04_Project_Tutorials')
+                            toast.success('Copied to clipboard!', { duration: 2000 })
+                          }}
+                          className={`mt-1 flex items-center gap-1 px-2 py-1 rounded ${isDarkMode ? 'bg-purple-600 hover:bg-purple-700' : 'bg-purple-500 hover:bg-purple-600'} text-white text-xs transition-colors`}
+                        >
+                          <Copy className="w-3 h-3" />
+                          Copy
+                        </button>
+                      </div>
+
+                      <div>
+                        <h4 className="font-medium text-sm mb-1 flex items-center gap-2">
+                          <Terminal className="w-3 h-3" />
+                          macOS/Linux:
+                        </h4>
+                        <div className={`p-2 rounded ${isDarkMode ? 'bg-gray-800' : 'bg-white'} border font-mono text-xs`}>
+                          <code>mkdir -p ~/OfflineLearning/&#123;01_Priority_Downloads,02_Specialization,03_Advanced_Topics,04_Project_Tutorials&#125;</code>
+                        </div>
+                        <button 
+                          onClick={() => {
+                            navigator.clipboard.writeText('mkdir -p ~/OfflineLearning/{01_Priority_Downloads,02_Specialization,03_Advanced_Topics,04_Project_Tutorials}')
+                            toast.success('Copied to clipboard!', { duration: 2000 })
+                          }}
+                          className={`mt-1 flex items-center gap-1 px-2 py-1 rounded ${isDarkMode ? 'bg-purple-600 hover:bg-purple-700' : 'bg-purple-500 hover:bg-purple-600'} text-white text-xs transition-colors`}
+                        >
+                          <Copy className="w-3 h-3" />
+                          Copy
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-yellow-900/20 border-yellow-700' : 'bg-yellow-100 border-yellow-300'} border`}>
+                    <h3 className="font-semibold text-yellow-400 mb-2">💡 Pro Nigerian Developer Tip:</h3>
+                    <p className="text-sm">
+                      Create this folder structure on your external drive too! When NEPA takes the light and your laptop dies, 
+                      you'll still have your organized downloads ready to go. Smart planning beats fast internet every time! 🇳🇬
+                    </p>
+                  </div>
+                </div>
+              </DialogContent>
+            </Dialog>
           </div>
         </div>
       </div>
