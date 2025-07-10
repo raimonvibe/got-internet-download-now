@@ -15,8 +15,12 @@ import {
   Youtube,
   Code,
   Users,
-  Trophy
+  Trophy,
+  ExternalLink,
+  GitBranch
 } from 'lucide-react'
+import { toast } from 'sonner'
+import { Toaster } from '@/components/ui/sonner'
 import './App.css'
 
 function App() {
@@ -40,6 +44,9 @@ function App() {
 
   const copyToClipboard = (text: string) => {
     navigator.clipboard.writeText(text)
+    toast.success('Copied to clipboard!', {
+      duration: 2000,
+    })
   }
 
   const themeClasses = isDarkMode 
@@ -105,11 +112,12 @@ function App() {
         {activeTab === 'getting-started' && <GettingStartedTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} copyToClipboard={copyToClipboard} />}
         {activeTab === 'priority-downloads' && <PriorityDownloadsTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} copyToClipboard={copyToClipboard} />}
         {activeTab === 'tools-setup' && <ToolsSetupTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} copyToClipboard={copyToClipboard} />}
-        {activeTab === 'learning-path' && <LearningPathTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} />}
+        {activeTab === 'learning-path' && <LearningPathTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} copyToClipboard={copyToClipboard} />}
         {activeTab === 'advanced-tips' && <AdvancedTipsTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} copyToClipboard={copyToClipboard} />}
         {activeTab === 'success-stories' && <SuccessStoriesTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} />}
         {activeTab === 'resources' && <ResourcesTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} copyToClipboard={copyToClipboard} />}
       </main>
+      <Toaster />
     </div>
   )
 }
@@ -343,7 +351,7 @@ function GettingStartedTab({ isDarkMode, cardClasses }: { isDarkMode: boolean, c
   )
 }
 
-function PriorityDownloadsTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, accentClasses: string, copyToClipboard: (text: string) => void }) {
+function PriorityDownloadsTab({ isDarkMode, cardClasses, accentClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, accentClasses: string, copyToClipboard: (text: string) => void }) {
   return (
     <div className="space-y-8">
       <div className={`rounded-xl p-6 ${cardClasses} border`}>
@@ -353,7 +361,12 @@ function PriorityDownloadsTab({ isDarkMode, cardClasses, copyToClipboard }: { is
         {/* Priority #1: freeCodeCamp */}
         <div className="space-y-4">
           <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-red-900/20 border-red-700' : 'bg-red-100 border-red-300'} border`}>
-            <h4 className="font-semibold text-red-500 mb-2">🚨 PRIORITY #1: freeCodeCamp Python (4.5 hours)</h4>
+            <h4 className="font-semibold text-red-500 mb-2">🚨 PRIORITY #1: 
+              <a href="https://www.youtube.com/watch?v=rfscVS0vtbw" target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-1">
+                freeCodeCamp Python (4.5 hours)
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </h4>
             <p className="text-sm mb-3">The most comprehensive Python course on the internet. Perfect for Nigerian beginners because it assumes no prior knowledge and covers everything from basics to advanced topics.</p>
             <div className={`p-3 rounded ${isDarkMode ? 'bg-gray-800' : 'bg-white'} font-mono text-sm flex items-center justify-between border`}>
               <span>yt-dlp "https://www.youtube.com/watch?v=rfscVS0vtbw"</span>
@@ -368,8 +381,13 @@ function PriorityDownloadsTab({ isDarkMode, cardClasses, copyToClipboard }: { is
 
           {/* Priority #2: MIT OpenCourseWare */}
           <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-orange-900/20 border-orange-700' : 'bg-orange-100 border-orange-300'} border`}>
-            <h4 className="font-semibold text-orange-500 mb-2">🔥 PRIORITY #2: MIT Introduction to Computer Science (24 hours)</h4>
-            <p className="text-sm mb-3">World-class computer science education from MIT. This course will give you the theoretical foundation that separates good programmers from great ones.</p>
+            <h4 className="font-semibold text-orange-500 mb-2">🔥 PRIORITY #2: 
+              <a href="https://www.youtube.com/playlist?list=PLUl4u3cNGP62A-ynp6v6-LGBCzeH3VAQB" target="_blank" rel="noopener noreferrer" className="hover:underline flex items-center gap-1">
+                MIT Introduction to Computer Science (24 hours)
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </h4>
+            <p className="text-sm mb-3">World-class computer science education from MIT. This course will give you the theoretical foundation that separates good programmers from great ones. Also available at <a href="https://ocw.mit.edu" target="_blank" rel="noopener noreferrer" className="text-blue-400 hover:underline">MIT OCW</a>.</p>
             <div className={`p-3 rounded ${isDarkMode ? 'bg-gray-800' : 'bg-white'} font-mono text-sm flex items-center justify-between border`}>
               <span>yt-dlp "https://www.youtube.com/playlist?list=PLUl4u3cNGP62A-ynp6v6-LGBCzeH3VAQB"</span>
               <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/playlist?list=PLUl4u3cNGP62A-ynp6v6-LGBCzeH3VAQB"')} className="p-1 hover:bg-gray-600 rounded">
@@ -467,26 +485,56 @@ function PriorityDownloadsTab({ isDarkMode, cardClasses, copyToClipboard }: { is
               <li>• App Store Deployment (3 hours)</li>
             </ul>
           </div>
-        </div>
-      </div>
-    </div>
-  )
-}
 
-function ToolsSetupTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, accentClasses: string, copyToClipboard: (text: string) => void }) {
-  return (
-    <div className="space-y-8">
-      <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <h2 className="text-3xl font-bold mb-4">Download Tools Setup</h2>
-        <p className="text-lg mb-4">Your Weapons Against Bad Internet</p>
-        <div className="space-y-4">
-          <div>
-            <h4 className="font-semibold mb-3">Install yt-dlp:</h4>
-            <div className={`p-3 rounded ${isDarkMode ? 'bg-gray-800' : 'bg-white'} font-mono text-sm flex items-center justify-between border`}>
-              <span>pip install yt-dlp</span>
-              <button onClick={() => copyToClipboard('pip install yt-dlp')} className="p-1 hover:bg-gray-600 rounded">
-                <Copy className="w-4 h-4" />
-              </button>
+          <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-purple-900/20 border-purple-700' : 'bg-purple-100 border-purple-300'} border`}>
+            <h4 className="font-semibold text-purple-500 mb-2">🎯 Essential YouTube Channels</h4>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mt-3">
+              <div className="space-y-2">
+                <div className="text-sm">
+                  <a href="https://www.youtube.com/@coreyms" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline font-semibold">
+                    Corey Schafer (@coreyms)
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <p className="text-xs opacity-70">1.0M+ subscribers • Python & Django</p>
+                </div>
+                <div className="text-sm">
+                  <a href="https://www.youtube.com/@sentdex" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline font-semibold">
+                    Sentdex (@sentdex)
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <p className="text-xs opacity-70">1.2M+ subscribers • ML & AI</p>
+                </div>
+                <div className="text-sm">
+                  <a href="https://www.youtube.com/@netninja" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline font-semibold">
+                    The Net Ninja (@netninja)
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <p className="text-xs opacity-70">1.1M+ subscribers • Web Dev</p>
+                </div>
+              </div>
+              <div className="space-y-2">
+                <div className="text-sm">
+                  <a href="https://www.youtube.com/@academind" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline font-semibold">
+                    Academind (@academind)
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <p className="text-xs opacity-70">900K+ subscribers • Modern Web</p>
+                </div>
+                <div className="text-sm">
+                  <a href="https://www.youtube.com/@3blue1brown" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline font-semibold">
+                    3Blue1Brown (@3blue1brown)
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <p className="text-xs opacity-70">5M+ subscribers • Math</p>
+                </div>
+                <div className="text-sm">
+                  <a href="https://www.youtube.com/@beneater" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline font-semibold">
+                    Ben Eater (@beneater)
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
+                  <p className="text-xs opacity-70">1M+ subscribers • Computer Engineering</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -495,7 +543,136 @@ function ToolsSetupTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkMod
   )
 }
 
-function LearningPathTab({ isDarkMode, cardClasses }: { isDarkMode: boolean, cardClasses: string, accentClasses: string }) {
+function ToolsSetupTab({ isDarkMode, cardClasses, accentClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, accentClasses: string, copyToClipboard: (text: string) => void }) {
+  return (
+    <div className="space-y-8">
+      <div className={`rounded-xl p-6 ${cardClasses} border`}>
+        <h2 className="text-3xl font-bold mb-4">Download Tools Setup</h2>
+        <p className="text-lg mb-4">Your Weapons Against Bad Internet</p>
+        
+        <div className="space-y-6">
+          <div>
+            <h4 className="font-semibold mb-3 flex items-center gap-2">
+              <Download className="w-5 h-5" />
+              Install yt-dlp
+            </h4>
+            <div className="space-y-3">
+              <div className="p-3 bg-opacity-50 rounded">
+                <h5 className="font-semibold mb-2">Windows</h5>
+                <div className={`p-3 rounded ${isDarkMode ? 'bg-gray-800' : 'bg-white'} font-mono text-sm flex items-center justify-between border`}>
+                  <span>pip install yt-dlp</span>
+                  <button onClick={() => copyToClipboard('pip install yt-dlp')} className="p-1 hover:bg-gray-600 rounded">
+                    <Copy className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+              <div className="p-3 bg-opacity-50 rounded">
+                <h5 className="font-semibold mb-2">macOS</h5>
+                <div className={`p-3 rounded ${isDarkMode ? 'bg-gray-800' : 'bg-white'} font-mono text-sm flex items-center justify-between border`}>
+                  <span>brew install yt-dlp</span>
+                  <button onClick={() => copyToClipboard('brew install yt-dlp')} className="p-1 hover:bg-gray-600 rounded">
+                    <Copy className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+              <div className="p-3 bg-opacity-50 rounded">
+                <h5 className="font-semibold mb-2">Linux</h5>
+                <div className={`p-3 rounded ${isDarkMode ? 'bg-gray-800' : 'bg-white'} font-mono text-sm flex items-center justify-between border`}>
+                  <span>sudo apt install yt-dlp</span>
+                  <button onClick={() => copyToClipboard('sudo apt install yt-dlp')} className="p-1 hover:bg-gray-600 rounded">
+                    <Copy className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-3 flex items-center gap-2">
+              <Zap className="w-5 h-5" />
+              Advanced Download Commands
+            </h4>
+            <div className="space-y-3">
+              <div className="p-3 bg-opacity-50 rounded">
+                <h5 className="font-semibold mb-2">Speed Demon Mode (Use all bandwidth)</h5>
+                <div className={`p-3 rounded ${isDarkMode ? 'bg-gray-800' : 'bg-white'} font-mono text-xs flex items-center justify-between border`}>
+                  <span className="flex-1 mr-2">yt-dlp --external-downloader aria2c --external-downloader-args "-x 16 -s 16" "VIDEO_URL"</span>
+                  <button onClick={() => copyToClipboard('yt-dlp --external-downloader aria2c --external-downloader-args "-x 16 -s 16" "VIDEO_URL"')} className="p-1 hover:bg-gray-600 rounded">
+                    <Copy className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+              <div className="p-3 bg-opacity-50 rounded">
+                <h5 className="font-semibold mb-2">Data Saver Mode (For expensive data)</h5>
+                <div className={`p-3 rounded ${isDarkMode ? 'bg-gray-800' : 'bg-white'} font-mono text-sm flex items-center justify-between border`}>
+                  <span>yt-dlp --limit-rate 100K "VIDEO_URL"</span>
+                  <button onClick={() => copyToClipboard('yt-dlp --limit-rate 100K "VIDEO_URL"')} className="p-1 hover:bg-gray-600 rounded">
+                    <Copy className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+              <div className="p-3 bg-opacity-50 rounded">
+                <h5 className="font-semibold mb-2">Resume Broken Downloads</h5>
+                <div className={`p-3 rounded ${isDarkMode ? 'bg-gray-800' : 'bg-white'} font-mono text-sm flex items-center justify-between border`}>
+                  <span>yt-dlp --continue "VIDEO_URL"</span>
+                  <button onClick={() => copyToClipboard('yt-dlp --continue "VIDEO_URL"')} className="p-1 hover:bg-gray-600 rounded">
+                    <Copy className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+              <div className="p-3 bg-opacity-50 rounded">
+                <h5 className="font-semibold mb-2">Audio Only (For lectures)</h5>
+                <div className={`p-3 rounded ${isDarkMode ? 'bg-gray-800' : 'bg-white'} font-mono text-sm flex items-center justify-between border`}>
+                  <span>yt-dlp -x --audio-format mp3 "VIDEO_URL"</span>
+                  <button onClick={() => copyToClipboard('yt-dlp -x --audio-format mp3 "VIDEO_URL"')} className="p-1 hover:bg-gray-600 rounded">
+                    <Copy className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="font-semibold mb-3 flex items-center gap-2">
+              <Code className="w-5 h-5" />
+              Smart Organization System
+            </h4>
+            <div className="space-y-3">
+              <div className="p-3 bg-opacity-50 rounded">
+                <h5 className="font-semibold mb-2">Create Learning Folder Structure</h5>
+                <div className="space-y-2">
+                  <div className={`p-2 rounded ${isDarkMode ? 'bg-gray-800' : 'bg-white'} font-mono text-sm flex items-center justify-between border`}>
+                    <span>mkdir ~/ProgrammingLibrary</span>
+                    <button onClick={() => copyToClipboard('mkdir ~/ProgrammingLibrary')} className="p-1 hover:bg-gray-600 rounded">
+                      <Copy className="w-3 h-3" />
+                    </button>
+                  </div>
+                  <div className={`p-2 rounded ${isDarkMode ? 'bg-gray-800' : 'bg-white'} font-mono text-sm flex items-center justify-between border`}>
+                    <span>cd ~/ProgrammingLibrary</span>
+                    <button onClick={() => copyToClipboard('cd ~/ProgrammingLibrary')} className="p-1 hover:bg-gray-600 rounded">
+                      <Copy className="w-3 h-3" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div className="p-3 bg-opacity-50 rounded">
+                <h5 className="font-semibold mb-2">Download with Smart Naming</h5>
+                <div className={`p-3 rounded ${isDarkMode ? 'bg-gray-800' : 'bg-white'} font-mono text-xs flex items-center justify-between border`}>
+                  <span className="flex-1 mr-2">yt-dlp -o "%(uploader)s - %(title)s.%(ext)s" "VIDEO_URL"</span>
+                  <button onClick={() => copyToClipboard('yt-dlp -o "%(uploader)s - %(title)s.%(ext)s" "VIDEO_URL"')} className="p-1 hover:bg-gray-600 rounded">
+                    <Copy className="w-4 h-4" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+function LearningPathTab({ isDarkMode, cardClasses, accentClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, accentClasses: string, copyToClipboard: (text: string) => void }) {
   return (
     <div className="space-y-8">
       <div className={`rounded-xl p-6 ${cardClasses} border`}>
@@ -505,11 +682,31 @@ function LearningPathTab({ isDarkMode, cardClasses }: { isDarkMode: boolean, car
           <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-blue-900/20 border-blue-700' : 'bg-blue-100 border-blue-300'} border`}>
             <h4 className="font-semibold text-blue-500 mb-2">Phase 1: The Awakening (Weeks 1-4)</h4>
             <p className="text-sm mb-3">Building Your Foundation - 33 hours total</p>
-            <ul className="text-sm space-y-1">
-              <li>• CS50 Lecture 0: Computer Science (2 hours)</li>
-              <li>• freeCodeCamp Python Basics (4.5 hours)</li>
-              <li>• Programming with Mosh JavaScript (6 hours)</li>
-              <li>• Git and GitHub Tutorial (2 hours)</li>
+            <ul className="text-sm space-y-2">
+              <li className="flex items-center justify-between">
+                <span>• CS50 Lecture 0: Computer Science (2 hours)</span>
+                <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=LfaMVlDaQ24"')} className="p-1 hover:bg-gray-600 rounded">
+                  <Copy className="w-3 h-3" />
+                </button>
+              </li>
+              <li className="flex items-center justify-between">
+                <span>• freeCodeCamp Python Basics (4.5 hours)</span>
+                <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=rfscVS0vtbw"')} className="p-1 hover:bg-gray-600 rounded">
+                  <Copy className="w-3 h-3" />
+                </button>
+              </li>
+              <li className="flex items-center justify-between">
+                <span>• Programming with Mosh JavaScript (6 hours)</span>
+                <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=PkZNo7MFNFg"')} className="p-1 hover:bg-gray-600 rounded">
+                  <Copy className="w-3 h-3" />
+                </button>
+              </li>
+              <li className="flex items-center justify-between">
+                <span>• Git and GitHub Tutorial (2 hours)</span>
+                <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=RGOj5yH7evk"')} className="p-1 hover:bg-gray-600 rounded">
+                  <Copy className="w-3 h-3" />
+                </button>
+              </li>
               <li>• HTML/CSS Crash Course (4 hours)</li>
               <li>• Build your first simple website (Practice time)</li>
             </ul>
@@ -866,7 +1063,7 @@ function SuccessStoriesTab({ isDarkMode, cardClasses }: { isDarkMode: boolean, c
   )
 }
 
-function ResourcesTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, accentClasses: string, copyToClipboard: (text: string) => void }) {
+function ResourcesTab({ isDarkMode, cardClasses, accentClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, accentClasses: string, copyToClipboard: (text: string) => void }) {
   return (
     <div className="space-y-8">
       <div className={`rounded-xl p-6 ${cardClasses} border`}>
@@ -961,10 +1158,18 @@ function ResourcesTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkMode
       </div>
 
       <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <h3 className="text-2xl font-bold mb-4">📚 Essential GitHub Repositories</h3>
+        <h3 className="text-2xl font-bold mb-4 flex items-center gap-2">
+          <GitBranch className="w-6 h-6" />
+          📚 Essential GitHub Repositories
+        </h3>
         <div className="grid md:grid-cols-2 gap-4">
           <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-gray-800' : 'bg-white'} border`}>
-            <h5 className="font-semibold mb-2">freeCodeCamp Curriculum</h5>
+            <h5 className="font-semibold mb-2">
+              <a href="https://github.com/freeCodeCamp/freeCodeCamp" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline">
+                freeCodeCamp Curriculum
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </h5>
             <p className="text-sm mb-2">Complete coding curriculum • 400k+ stars</p>
             <p className="text-xs text-purple-500 mb-2">Data cost: ~50MB (clone) | Offline access to all exercises</p>
             <div className={`p-2 rounded ${isDarkMode ? 'bg-gray-900' : 'bg-gray-100'} font-mono text-xs flex items-center justify-between`}>
@@ -976,12 +1181,51 @@ function ResourcesTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkMode
           </div>
 
           <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-gray-800' : 'bg-white'} border`}>
-            <h5 className="font-semibold mb-2">Awesome Lists</h5>
-            <p className="text-sm mb-2">Curated lists of resources • 300k+ stars</p>
-            <p className="text-xs text-purple-500 mb-2">Data cost: ~10MB (clone) | Links to thousands of resources</p>
+            <h5 className="font-semibold mb-2">
+              <a href="https://github.com/practical-tutorials/project-based-learning" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline">
+                Project-Based Learning
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </h5>
+            <p className="text-sm mb-2">Curated list of project tutorials • 235k+ stars</p>
+            <p className="text-xs text-purple-500 mb-2">Data cost: ~5MB (clone) | Build real projects</p>
             <div className={`p-2 rounded ${isDarkMode ? 'bg-gray-900' : 'bg-gray-100'} font-mono text-xs flex items-center justify-between`}>
-              <span>git clone https://github.com/sindresorhus/awesome.git</span>
-              <button onClick={() => copyToClipboard('git clone https://github.com/sindresorhus/awesome.git')} className="p-1 hover:bg-gray-600 rounded">
+              <span>git clone https://github.com/practical-tutorials/project-based-learning.git</span>
+              <button onClick={() => copyToClipboard('git clone https://github.com/practical-tutorials/project-based-learning.git')} className="p-1 hover:bg-gray-600 rounded">
+                <Copy className="w-3 h-3" />
+              </button>
+            </div>
+          </div>
+
+          <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-gray-800' : 'bg-white'} border`}>
+            <h5 className="font-semibold mb-2">
+              <a href="https://github.com/microsoft/Web-Dev-For-Beginners" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline">
+                Microsoft Web Dev for Beginners
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </h5>
+            <p className="text-sm mb-2">24-lesson curriculum • 83k+ stars</p>
+            <p className="text-xs text-purple-500 mb-2">Data cost: ~20MB (clone) | Complete web dev course</p>
+            <div className={`p-2 rounded ${isDarkMode ? 'bg-gray-900' : 'bg-gray-100'} font-mono text-xs flex items-center justify-between`}>
+              <span>git clone https://github.com/microsoft/Web-Dev-For-Beginners.git</span>
+              <button onClick={() => copyToClipboard('git clone https://github.com/microsoft/Web-Dev-For-Beginners.git')} className="p-1 hover:bg-gray-600 rounded">
+                <Copy className="w-3 h-3" />
+              </button>
+            </div>
+          </div>
+
+          <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-gray-800' : 'bg-white'} border`}>
+            <h5 className="font-semibold mb-2">
+              <a href="https://github.com/Developer-Y/cs-video-courses" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 hover:underline">
+                CS Video Courses
+                <ExternalLink className="w-3 h-3" />
+              </a>
+            </h5>
+            <p className="text-sm mb-2">List of CS courses with video lectures • 67k+ stars</p>
+            <p className="text-xs text-purple-500 mb-2">Data cost: ~2MB (clone) | University course links</p>
+            <div className={`p-2 rounded ${isDarkMode ? 'bg-gray-900' : 'bg-gray-100'} font-mono text-xs flex items-center justify-between`}>
+              <span>git clone https://github.com/Developer-Y/cs-video-courses.git</span>
+              <button onClick={() => copyToClipboard('git clone https://github.com/Developer-Y/cs-video-courses.git')} className="p-1 hover:bg-gray-600 rounded">
                 <Copy className="w-3 h-3" />
               </button>
             </div>
