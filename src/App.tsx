@@ -6,7 +6,6 @@ import {
   Wrench, 
   Map, 
   Zap, 
-  Star, 
   Link,
   Moon,
   Sun,
@@ -14,12 +13,21 @@ import {
   Copy,
   Youtube,
   Code,
-  Users,
   Trophy,
   ExternalLink,
-  GitBranch,
-  Linkedin
+  GitBranch
 } from 'lucide-react'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { 
+  faXTwitter, 
+  faYoutube, 
+  faTiktok, 
+  faInstagram, 
+  faMedium, 
+  faGithub, 
+  faLinkedinIn, 
+  faFacebookF 
+} from '@fortawesome/free-brands-svg-icons'
 import { toast } from 'sonner'
 import { Toaster } from '@/components/ui/sonner'
 import './App.css'
@@ -35,7 +43,6 @@ function App() {
     { id: 'tools-setup', label: 'Tools & Setup', icon: Wrench },
     { id: 'learning-path', label: 'Learning Path', icon: Map },
     { id: 'advanced-tips', label: 'Advanced Tips', icon: Zap },
-    { id: 'success-stories', label: 'Success Stories', icon: Star },
     { id: 'resources', label: 'Resources', icon: Link }
   ]
 
@@ -119,21 +126,91 @@ function App() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 py-8">
-        {activeTab === 'home' && <HomeTab isDarkMode={isDarkMode} cardClasses={cardClasses} accentClasses={accentClasses} vibrantAccentClasses={vibrantAccentClasses} gradientTextClasses={gradientTextClasses} colorfulCardClasses={colorfulCardClasses} />}
+        {activeTab === 'home' && <HomeTab isDarkMode={isDarkMode} cardClasses={cardClasses} vibrantAccentClasses={vibrantAccentClasses} gradientTextClasses={gradientTextClasses} colorfulCardClasses={colorfulCardClasses} />}
         {activeTab === 'getting-started' && <GettingStartedTab isDarkMode={isDarkMode} cardClasses={cardClasses} vibrantAccentClasses={vibrantAccentClasses} gradientTextClasses={gradientTextClasses} />}
         {activeTab === 'priority-downloads' && <PriorityDownloadsTab isDarkMode={isDarkMode} cardClasses={cardClasses} vibrantAccentClasses={vibrantAccentClasses} gradientTextClasses={gradientTextClasses} copyToClipboard={copyToClipboard} />}
         {activeTab === 'tools-setup' && <ToolsSetupTab isDarkMode={isDarkMode} cardClasses={cardClasses} vibrantAccentClasses={vibrantAccentClasses} gradientTextClasses={gradientTextClasses} copyToClipboard={copyToClipboard} />}
         {activeTab === 'learning-path' && <LearningPathTab isDarkMode={isDarkMode} copyToClipboard={copyToClipboard} />}
         {activeTab === 'advanced-tips' && <AdvancedTipsTab isDarkMode={isDarkMode} cardClasses={cardClasses} vibrantAccentClasses={vibrantAccentClasses} gradientTextClasses={gradientTextClasses} copyToClipboard={copyToClipboard} />}
-        {activeTab === 'success-stories' && <SuccessStoriesTab isDarkMode={isDarkMode} cardClasses={cardClasses} vibrantAccentClasses={vibrantAccentClasses} gradientTextClasses={gradientTextClasses} />}
         {activeTab === 'resources' && <ResourcesTab isDarkMode={isDarkMode} cardClasses={cardClasses} gradientTextClasses={gradientTextClasses} copyToClipboard={copyToClipboard} />}
       </main>
+      
+      {/* Footer */}
+      <footer className={`footer-raimon mt-16 border-t ${isDarkMode ? 'bg-gray-900 border-gray-700' : 'bg-white border-gray-200'}`}>
+        <div className="container max-w-7xl mx-auto px-4 py-8">
+          <div className="footer-raimon-content text-center">
+            <h3 className={`footer-raimon-title text-2xl font-bold mb-6 ${isDarkMode ? 'text-white' : 'text-gray-900'}`}>Connect with Raimon</h3>
+            <ul className="social-grid grid grid-cols-4 md:grid-cols-8 gap-4 max-w-2xl mx-auto mb-6">
+              <li>
+                <a href="https://x.com/raimonvibe/" target="_blank" rel="noopener noreferrer" 
+                   className={`social-link social-twitter flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${isDarkMode ? 'bg-gray-800 hover:bg-blue-600 text-gray-300 hover:text-white' : 'bg-gray-100 hover:bg-blue-500 text-gray-600 hover:text-white'}`}>
+                  <FontAwesomeIcon icon={faXTwitter} className="w-5 h-5" />
+                  <span className="sr-only">X</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.youtube.com/channel/UCDGDNuYb2b2Ets9CYCNVbuA/videos/" target="_blank" rel="noopener noreferrer"
+                   className={`social-link social-youtube flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${isDarkMode ? 'bg-gray-800 hover:bg-red-600 text-gray-300 hover:text-white' : 'bg-gray-100 hover:bg-red-500 text-gray-600 hover:text-white'}`}>
+                  <FontAwesomeIcon icon={faYoutube} className="w-5 h-5" />
+                  <span className="sr-only">YouTube</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.tiktok.com/@raimonvibe/" target="_blank" rel="noopener noreferrer"
+                   className={`social-link social-tiktok flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${isDarkMode ? 'bg-gray-800 hover:bg-pink-600 text-gray-300 hover:text-white' : 'bg-gray-100 hover:bg-pink-500 text-gray-600 hover:text-white'}`}>
+                  <FontAwesomeIcon icon={faTiktok} className="w-5 h-5" />
+                  <span className="sr-only">TikTok</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.instagram.com/raimonvibe/" target="_blank" rel="noopener noreferrer"
+                   className={`social-link social-instagram flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${isDarkMode ? 'bg-gray-800 hover:bg-gradient-to-r hover:from-purple-600 hover:to-pink-600 text-gray-300 hover:text-white' : 'bg-gray-100 hover:bg-gradient-to-r hover:from-purple-500 hover:to-pink-500 text-gray-600 hover:text-white'}`}>
+                  <FontAwesomeIcon icon={faInstagram} className="w-5 h-5" />
+                  <span className="sr-only">Instagram</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://medium.com/@raimonvibe/" target="_blank" rel="noopener noreferrer"
+                   className={`social-link social-medium flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${isDarkMode ? 'bg-gray-800 hover:bg-green-600 text-gray-300 hover:text-white' : 'bg-gray-100 hover:bg-green-500 text-gray-600 hover:text-white'}`}>
+                  <FontAwesomeIcon icon={faMedium} className="w-5 h-5" />
+                  <span className="sr-only">Medium</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://github.com/raimonvibe/" target="_blank" rel="noopener noreferrer"
+                   className={`social-link social-github flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${isDarkMode ? 'bg-gray-800 hover:bg-gray-600 text-gray-300 hover:text-white' : 'bg-gray-100 hover:bg-gray-700 text-gray-600 hover:text-white'}`}>
+                  <FontAwesomeIcon icon={faGithub} className="w-5 h-5" />
+                  <span className="sr-only">GitHub</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/in/raimonvibe/" target="_blank" rel="noopener noreferrer"
+                   className={`social-link social-linkedin flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${isDarkMode ? 'bg-gray-800 hover:bg-blue-700 text-gray-300 hover:text-white' : 'bg-gray-100 hover:bg-blue-600 text-gray-600 hover:text-white'}`}>
+                  <FontAwesomeIcon icon={faLinkedinIn} className="w-5 h-5" />
+                  <span className="sr-only">LinkedIn</span>
+                </a>
+              </li>
+              <li>
+                <a href="https://www.facebook.com/profile.php?id=61563450007849" target="_blank" rel="noopener noreferrer"
+                   className={`social-link social-facebook flex items-center justify-center w-12 h-12 rounded-full transition-all duration-300 ${isDarkMode ? 'bg-gray-800 hover:bg-blue-800 text-gray-300 hover:text-white' : 'bg-gray-100 hover:bg-blue-600 text-gray-600 hover:text-white'}`}>
+                  <FontAwesomeIcon icon={faFacebookF} className="w-5 h-5" />
+                  <span className="sr-only">Facebook</span>
+                </a>
+              </li>
+            </ul>
+            <div className={`footer-copyright text-sm ${isDarkMode ? 'text-gray-400' : 'text-gray-600'}`}>
+              <p>&copy; 2025 Nigerian Payment Solutions Guide. Built for Nigerian developers, by developers.</p>
+            </div>
+          </div>
+        </div>
+      </footer>
+      
       <Toaster />
     </div>
   )
 }
 
-function HomeTab({ isDarkMode, cardClasses, accentClasses, vibrantAccentClasses, gradientTextClasses, colorfulCardClasses }: { isDarkMode: boolean, cardClasses: string, accentClasses: string, vibrantAccentClasses: string, gradientTextClasses: string, colorfulCardClasses: string }) {
+function HomeTab({ isDarkMode, cardClasses, vibrantAccentClasses, gradientTextClasses, colorfulCardClasses }: { isDarkMode: boolean, cardClasses: string, vibrantAccentClasses: string, gradientTextClasses: string, colorfulCardClasses: string }) {
   return (
     <div className="space-y-8">
       {/* Hero Section */}
@@ -156,33 +233,6 @@ function HomeTab({ isDarkMode, cardClasses, accentClasses, vibrantAccentClasses,
         </div>
       </div>
 
-      {/* Ada's Story Preview */}
-      <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <div className="flex items-start space-x-4">
-          <div className={`p-3 rounded-full ${isDarkMode ? 'bg-blue-900' : 'bg-amber-100'}`}>
-            <Users className={`w-6 h-6 ${accentClasses}`} />
-          </div>
-          <div className="flex-1">
-            <h3 className={`text-2xl font-bold mb-3 ${gradientTextClasses}`}>Meet Ada Okafor</h3>
-            <p className="text-lg mb-4">A 23-year-old computer science graduate from University of Lagos who went from frustrated student to senior developer at Paystack in 18 months.</p>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-gray-800' : 'bg-amber-50'}`}>
-                <h4 className="font-semibold mb-2">Ada's Smart Strategy:</h4>
-                <p className="text-sm">"I spent only ₦5,000 on data over 6 months by downloading one course at a time, studying it completely offline, then downloading the next one when I was ready."</p>
-              </div>
-              <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-gray-800' : 'bg-amber-50'}`}>
-                <h4 className="font-semibold mb-2">The Results:</h4>
-                <ul className="text-sm space-y-1">
-                  <li>• 12 carefully selected courses (not 200+)</li>
-                  <li>• 500+ hours of focused offline study</li>
-                  <li>• 15 projects built using downloaded tutorials</li>
-                  <li>• ₦2.5M/year job at a fintech company</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
       {/* Quick Stats */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -1202,148 +1252,6 @@ function AdvancedTipsTab({ isDarkMode, cardClasses, vibrantAccentClasses, gradie
   )
 }
 
-function SuccessStoriesTab({ isDarkMode, cardClasses, vibrantAccentClasses, gradientTextClasses }: { isDarkMode: boolean, cardClasses: string, vibrantAccentClasses: string, gradientTextClasses: string }) {
-  return (
-    <div className="space-y-8">
-      <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <h2 className={`text-3xl font-bold mb-4 ${gradientTextClasses}`}>Success Stories</h2>
-        <p className={`text-lg mb-4 ${vibrantAccentClasses} font-semibold`}>Real Nigerian developers who made it using smart downloading strategies</p>
-        <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-green-900/20 border-green-700' : 'bg-green-100 border-green-300'} border`}>
-          <p className="font-semibold text-green-500">🎉 From Zero to Hero</p>
-          <p className="mt-2">These are real stories from developers who started with limited data budgets but unlimited determination.</p>
-        </div>
-      </div>
-
-      <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <div className="flex items-center gap-3 mb-4">
-          <h3 className="text-2xl font-bold">Emeka from Enugu: The Strategic Learner</h3>
-          <a href="https://linkedin.com/in/emeka-enugu-developer" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-blue-500 hover:text-blue-400 transition-colors">
-            <Linkedin className="w-5 h-5" />
-            <ExternalLink className="w-3 h-3" />
-          </a>
-        </div>
-        <div className="space-y-4">
-          <div className="flex items-start space-x-4">
-            <div className={`p-3 rounded-full ${isDarkMode ? 'bg-blue-900' : 'bg-blue-100'}`}>
-              <Users className="w-6 h-6 text-blue-500" />
-            </div>
-            <div className="flex-1">
-              <p className="text-lg mb-4">
-                Emeka was a 26-year-old mechanic in Enugu who spent his evenings learning to code. 
-                With only ₦3,000 monthly data budget, he had to be extremely strategic.
-              </p>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'} border`}>
-                  <h4 className="font-semibold mb-2">His Strategy:</h4>
-                  <ul className="text-sm space-y-1">
-                    <li>• Downloaded one complete course per month</li>
-                    <li>• Studied offline for 2-3 hours every evening</li>
-                    <li>• Built projects using downloaded tutorials</li>
-                    <li>• Only downloaded next course after mastering current one</li>
-                  </ul>
-                </div>
-                <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'} border`}>
-                  <h4 className="font-semibold mb-2">The Timeline:</h4>
-                  <ul className="text-sm space-y-1">
-                    <li>• Month 1-2: HTML/CSS fundamentals</li>
-                    <li>• Month 3-4: JavaScript basics</li>
-                    <li>• Month 5-6: React development</li>
-                    <li>• Month 7-8: Node.js backend</li>
-                    <li>• Month 9: Portfolio projects</li>
-                    <li>• Month 10: Got first freelance client</li>
-                  </ul>
-                </div>
-              </div>
-              <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-green-900/20 border-green-700' : 'bg-green-100 border-green-300'} border mt-4`}>
-                <p className="font-semibold text-green-500">The Result:</p>
-                <p className="text-sm mt-1">
-                  Now earning ₦150,000/month as a freelance developer. Total data cost: ₦30,000 over 10 months. 
-                  ROI: 500% in the first month of freelancing.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <div className="flex items-center gap-3 mb-4">
-          <h3 className="text-2xl font-bold">Fatima from Kano: The Mobile App Developer</h3>
-          <a href="https://linkedin.com/in/fatima-kano-mobile-dev" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1 text-blue-500 hover:text-blue-400 transition-colors">
-            <Linkedin className="w-5 h-5" />
-            <ExternalLink className="w-3 h-3" />
-          </a>
-        </div>
-        <div className="space-y-4">
-          <div className="flex items-start space-x-4">
-            <div className={`p-3 rounded-full ${isDarkMode ? 'bg-purple-900' : 'bg-purple-100'}`}>
-              <Users className="w-6 h-6 text-purple-500" />
-            </div>
-            <div className="flex-1">
-              <p className="text-lg mb-4">
-                Fatima was a 22-year-old university student studying Economics. She wanted to build mobile apps 
-                but had unreliable campus internet and a tight budget.
-              </p>
-              <div className="grid md:grid-cols-2 gap-4">
-                <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'} border`}>
-                  <h4 className="font-semibold mb-2">Her Challenge:</h4>
-                  <ul className="text-sm space-y-1">
-                    <li>• Campus internet only worked 2-3 hours daily</li>
-                    <li>• ₦2,000 monthly data budget</li>
-                    <li>• No laptop, only Android phone initially</li>
-                    <li>• Had to study during frequent power outages</li>
-                  </ul>
-                </div>
-                <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-gray-800' : 'bg-gray-50'} border`}>
-                  <h4 className="font-semibold mb-2">Her Solution:</h4>
-                  <ul className="text-sm space-y-1">
-                    <li>• Downloaded Flutter course in 480p (saved 60% data)</li>
-                    <li>• Used phone for initial learning and practice</li>
-                    <li>• Downloaded Android Studio tutorials</li>
-                    <li>• Built first app entirely offline</li>
-                  </ul>
-                </div>
-              </div>
-              <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-purple-900/20 border-purple-700' : 'bg-purple-100 border-purple-300'} border mt-4`}>
-                <p className="font-semibold text-purple-500">The Amazing Result:</p>
-                <p className="text-sm mt-1">
-                  Built and published 3 mobile apps within 8 months. One app got 10,000+ downloads. 
-                  Now works as mobile developer at a Lagos startup earning ₦300,000/month.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className={`rounded-xl p-6 ${cardClasses} border`}>
-        <h3 className="text-2xl font-bold mb-4">Key Lessons from Success Stories</h3>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-blue-900/20 border-blue-700' : 'bg-blue-100 border-blue-300'} border`}>
-            <h4 className="font-semibold text-blue-500 mb-3">💡 What They Did Right</h4>
-            <ul className="text-sm space-y-2">
-              <li>• <strong>One course at a time:</strong> Mastered each before moving to next</li>
-              <li>• <strong>Quality over quantity:</strong> Better to deeply understand few courses</li>
-              <li>• <strong>Practical application:</strong> Built projects using downloaded tutorials</li>
-              <li>• <strong>Budget discipline:</strong> Stuck to data budgets and optimized downloads</li>
-              <li>• <strong>Consistency:</strong> Studied regularly, even during power outages</li>
-            </ul>
-          </div>
-          <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-green-900/20 border-green-700' : 'bg-green-100 border-green-300'} border`}>
-            <h4 className="font-semibold text-green-500 mb-3">🎯 Common Success Factors</h4>
-            <ul className="text-sm space-y-2">
-              <li>• <strong>Strategic downloading:</strong> Planned what to download based on learning goals</li>
-              <li>• <strong>Offline-first mindset:</strong> Assumed internet would be unreliable</li>
-              <li>• <strong>Data consciousness:</strong> Always considered data costs before downloading</li>
-              <li>• <strong>Project-based learning:</strong> Applied knowledge immediately through projects</li>
-              <li>• <strong>Community support:</strong> Connected with other learners online when possible</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </div>
-  )
-}
 
 function ResourcesTab({ isDarkMode, cardClasses, gradientTextClasses, copyToClipboard }: { isDarkMode: boolean, cardClasses: string, gradientTextClasses: string, copyToClipboard: (text: string) => void }) {
   return (
