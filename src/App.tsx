@@ -715,12 +715,37 @@ function LearningPathTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkM
           <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-green-900/20 border-green-700' : 'bg-green-100 border-green-300'} border`}>
             <h4 className="font-semibold text-green-500 mb-2">Phase 2: The Strengthening (Weeks 5-12)</h4>
             <p className="text-sm mb-3">Developing Core Skills - 55 hours total</p>
-            <ul className="text-sm space-y-1">
-              <li>• Complete CS50 Course (25 hours)</li>
-              <li>• Advanced JavaScript Concepts (8 hours)</li>
-              <li>• React Fundamentals (12 hours)</li>
-              <li>• Node.js and Express (10 hours)</li>
-              <li>• Database Fundamentals (6 hours)</li>
+            <ul className="text-sm space-y-2">
+              <li className="flex items-center justify-between">
+                <span>• Complete CS50 Course (25 hours)</span>
+                <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/playlist?list=PLhQjrBD2T380F_inVRXMIHCqLaNUd7bN4"')} className="p-1 hover:bg-gray-600 rounded">
+                  <Copy className="w-3 h-3" />
+                </button>
+              </li>
+              <li className="flex items-center justify-between">
+                <span>• Advanced JavaScript Concepts (8 hours)</span>
+                <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=Mus_vwhTCq0"')} className="p-1 hover:bg-gray-600 rounded">
+                  <Copy className="w-3 h-3" />
+                </button>
+              </li>
+              <li className="flex items-center justify-between">
+                <span>• React Fundamentals (12 hours)</span>
+                <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=bMknfKXIFA8"')} className="p-1 hover:bg-gray-600 rounded">
+                  <Copy className="w-3 h-3" />
+                </button>
+              </li>
+              <li className="flex items-center justify-between">
+                <span>• Node.js and Express (10 hours)</span>
+                <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=Oe421EPjeBE"')} className="p-1 hover:bg-gray-600 rounded">
+                  <Copy className="w-3 h-3" />
+                </button>
+              </li>
+              <li className="flex items-center justify-between">
+                <span>• Database Fundamentals (6 hours)</span>
+                <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=HXV3zeQKqGY"')} className="p-1 hover:bg-gray-600 rounded">
+                  <Copy className="w-3 h-3" />
+                </button>
+              </li>
               <li>• Build 3-5 portfolio projects (Practice time)</li>
             </ul>
           </div>
@@ -731,18 +756,48 @@ function LearningPathTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkM
             <div className="grid md:grid-cols-2 gap-3">
               <div>
                 <h5 className="font-medium text-purple-400 mb-1">Web Development Track:</h5>
-                <ul className="text-xs space-y-1">
-                  <li>• Advanced React Patterns (15 hours)</li>
-                  <li>• Full-Stack Development (20 hours)</li>
-                  <li>• Deployment and DevOps (10 hours)</li>
+                <ul className="text-xs space-y-2">
+                  <li className="flex items-center justify-between">
+                    <span>• Advanced React Patterns (15 hours)</span>
+                    <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=3XaXKiXtNjw"')} className="p-1 hover:bg-gray-600 rounded">
+                      <Copy className="w-2 h-2" />
+                    </button>
+                  </li>
+                  <li className="flex items-center justify-between">
+                    <span>• Full-Stack Development (20 hours)</span>
+                    <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=nu_pCVPKzTk"')} className="p-1 hover:bg-gray-600 rounded">
+                      <Copy className="w-2 h-2" />
+                    </button>
+                  </li>
+                  <li className="flex items-center justify-between">
+                    <span>• Deployment and DevOps (10 hours)</span>
+                    <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=9pZ2xmsSDdo"')} className="p-1 hover:bg-gray-600 rounded">
+                      <Copy className="w-2 h-2" />
+                    </button>
+                  </li>
                 </ul>
               </div>
               <div>
                 <h5 className="font-medium text-purple-400 mb-1">Mobile Development Track:</h5>
-                <ul className="text-xs space-y-1">
-                  <li>• React Native Complete (25 hours)</li>
-                  <li>• Flutter Development (20 hours)</li>
-                  <li>• Mobile UI/UX Design (10 hours)</li>
+                <ul className="text-xs space-y-2">
+                  <li className="flex items-center justify-between">
+                    <span>• React Native Complete (25 hours)</span>
+                    <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=0-S5a0eXPoc"')} className="p-1 hover:bg-gray-600 rounded">
+                      <Copy className="w-2 h-2" />
+                    </button>
+                  </li>
+                  <li className="flex items-center justify-between">
+                    <span>• Flutter Development (20 hours)</span>
+                    <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=1ukSR1GRtMU"')} className="p-1 hover:bg-gray-600 rounded">
+                      <Copy className="w-2 h-2" />
+                    </button>
+                  </li>
+                  <li className="flex items-center justify-between">
+                    <span>• Mobile UI/UX Design (10 hours)</span>
+                    <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=68w2VwalD5w"')} className="p-1 hover:bg-gray-600 rounded">
+                      <Copy className="w-2 h-2" />
+                    </button>
+                  </li>
                 </ul>
               </div>
             </div>
@@ -751,13 +806,28 @@ function LearningPathTab({ isDarkMode, cardClasses, copyToClipboard }: { isDarkM
           <div className={`p-4 rounded-lg ${isDarkMode ? 'bg-orange-900/20 border-orange-700' : 'bg-orange-100 border-orange-300'} border`}>
             <h4 className="font-semibold text-orange-500 mb-2">Phase 4: The Mastery (Weeks 25+)</h4>
             <p className="text-sm mb-3">Professional Development - Ongoing</p>
-            <ul className="text-sm space-y-1">
-              <li>• System Design and Architecture (20+ hours)</li>
-              <li>• Advanced Algorithms and Data Structures (15+ hours)</li>
+            <ul className="text-sm space-y-2">
+              <li className="flex items-center justify-between">
+                <span>• System Design and Architecture (20+ hours)</span>
+                <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=UzLMhqg3_Wc"')} className="p-1 hover:bg-gray-600 rounded">
+                  <Copy className="w-3 h-3" />
+                </button>
+              </li>
+              <li className="flex items-center justify-between">
+                <span>• Advanced Algorithms and Data Structures (15+ hours)</span>
+                <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=8hly31xKli0"')} className="p-1 hover:bg-gray-600 rounded">
+                  <Copy className="w-3 h-3" />
+                </button>
+              </li>
               <li>• Open Source Contributions (Ongoing)</li>
               <li>• Mentoring Other Code Seekers (Ongoing)</li>
               <li>• Building Commercial Applications (Ongoing)</li>
-              <li>• Interview Preparation and Job Search (Ongoing)</li>
+              <li className="flex items-center justify-between">
+                <span>• Interview Preparation and Job Search (Ongoing)</span>
+                <button onClick={() => copyToClipboard('yt-dlp "https://www.youtube.com/watch?v=1qw5ITr3k9E"')} className="p-1 hover:bg-gray-600 rounded">
+                  <Copy className="w-3 h-3" />
+                </button>
+              </li>
             </ul>
           </div>
         </div>
